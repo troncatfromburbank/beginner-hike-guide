@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beginner Hiking Hub: Trail Essentials & Safety</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-accent: #1e293b;
+            --text-main: #334155;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --accent-green: #059669;
+            --accent-green-bg: #ecfdf5;
+            --focus-ring: #2563eb;
+            --radius: 12px;
+            --transition: all 0.2s ease-in-out;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-accent) 100%);
+            color: #ffffff;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-green);
+        }
+
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.025em;
+        }
+
+        header p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: -2rem auto 3rem auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .intro-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .intro-card h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .grid-sections {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-sections {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .full-width {
+                grid-column: span 2;
+            }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            font-size: 1.35rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.75rem;
+            font-size: 0.95rem;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.1rem;
+        }
+
+        li strong {
+            color: var(--primary);
+        }
+
+        /* Links and touch targets */
+        a {
+            color: #2563eb;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: #1d4ed8;
+        }
+
+        .resource-list li {
+            padding-left: 0;
+        }
+        .resource-list li::before {
+            display: none;
+        }
+        .resource-item {
+            display: block;
+            background: var(--bg-page);
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            min-height: 44px; /* Touch target constraint */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .resource-item:hover {
+            background: var(--accent-green-bg);
+            border-color: #a7f3d0;
+            color: var(--primary);
+        }
+
+        .resource-item::after {
+            content: "→";
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: #64748b;
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-card);
+            margin-top: 3rem;
+        }
+
+        /* Mobile specific enhancements */
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 1rem;
+            }
+            main {
+                margin-top: -1rem;
+                padding: 0 0.75rem;
+            }
+            .intro-card, .card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Beginner Hiking Hub</h1>
+            <p>Trail Essentials & Safety</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Welcome Section -->
+        <section class="intro-card">
+            <h2>Welcome to the Trail</h2>
+            <p>Starting your hiking journey is a rewarding way to connect with nature, stay active, and explore new landscapes. This guide provides essential safety tips, recommended gear, and reliable resources to ensure your first hike is both safe and enjoyable.</p>
+        </section>
+
+        <div class="grid-sections">
+            <!-- Gear & Checklist Section -->
+            <section class="card">
+                <h2>What to Bring on a Short Hike</h2>
+                <ul>
+                    <li><strong>Hydration</strong>: At least 16 to 24 ounces of water per hour of moderate hiking.</li>
+                    <li><strong>Nutrition</strong>: High-energy, lightweight snacks such as trail mix, granola bars, or dried fruit.</li>
+                    <li><strong>Safety & Navigation</strong>: A fully charged mobile phone, a portable power bank, and a downloaded digital or physical trail map.</li>
+                    <li><strong>First Aid</strong>: Basic adhesive bandages, antiseptic wipes, and any necessary personal medications.</li>
+                    <li><strong>Layers</strong>: Moisture-wicking base layers and a lightweight, windproof or waterproof outer shell depending on weather conditions.</li>
+                </ul>
+            </section>
+
+            <!-- Etiquette & Safety Rules -->
+            <section class="card">
+                <h2>Essential Trail Etiquette & Safety Rules</h2>
+                <ul>
+                    <li><strong>Stay on the Marked Path</strong>: Protect local ecosystems, prevent erosion, and avoid getting lost by sticking strictly to designated trails.</li>
+                    <li><strong>Leave No Trace</strong>: Pack out everything you bring in, including food wrappers, packaging, and waste.</li>
+                    <li><strong>Yield to Others</strong>: Hikers traveling uphill generally have the right-of-way. Step aside safely to let faster traffic or uphill hikers pass when appropriate.</li>
+                </ul>
+            </section>
+
+            <!-- Resources Section -->
+            <section class="card full-width">
+                <h2>Official Resources & Further Reading</h2>
+                <ul class="resource-list">
+                    <li>
+                        <a class="resource-item" href="https://www.fs.usda.gov" target="_blank" rel="noopener noreferrer">
+                            Plan your routes and check current trail conditions through official federal resources like the USDA Forest Service Hiking Safety Guide.
+                        </a>
+                    </li>
+                    <li>
+                        <a class="resource-item" href="https://lnt.org" target="_blank" rel="noopener noreferrer">
+                            Review comprehensive outdoor ethics and leave-no-trace principles at Leave No Trace Center for Outdoor Ethics.
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Beginner Hiking Hub. Prepared for your safe outdoor exploration.</p>
+    </footer>
+</body>
+</html>
